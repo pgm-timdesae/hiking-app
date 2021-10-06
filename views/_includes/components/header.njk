@@ -1,0 +1,50 @@
+{# Variabelen voor navigatie #}
+{% set navPages = collections.all | eleventyNavigation %}
+
+<header class="h-layout">
+    <nav class="navbar">
+
+        <div class="navbar-left">
+            <a class="logo" href="/index.html">
+                <img src="./images/logo-hiking.svg" alt="">
+            </a>
+
+            <span>Become the king of the hike</span>
+        </div>
+
+        <ul class="navbar_list">
+            {% for navItem in navPages %}
+                <li>
+                    <a href="{{ navItem.url }}">
+                        {% if page.url === navItem.url %}
+                            <strong class="active">
+                                {{ navItem.title }} 
+                            </strong>
+                        {% else %}
+                                {{ navItem.title }}
+                        {% endif %}
+                    </a>
+
+                    {% if navItem.children | length %}
+                        <ul>
+                            {% for navChildPage in navItem.children %}
+                                <li>
+                                    <a href="{{ navChildPage.url | url }}">
+                                        {% if navChildPage.url == page.url %}
+                                            <strong class="active">
+                                                {{ navChildPage.title }} 
+                                            </strong>
+                                        {% else %}
+                                            {{ navChildPage.title }}    
+                                        {% endif %}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,93 @@
+---
+layout: base
+title: home
+eleventyNavigation:
+    key: Home
+    order: 1
+---
+
+<section class="h-layout hero">
+    <div class="hero-image">
+        <img src="./images/hero.png" alt="hero-image">
+    </div>
+
+    <div class="hero-text">
+        <h1>You might like this...</h1>
+            <div class="hero-text-p">
+                <h2>Become the king of the hike</h2>
+                <p>Discover new hikes and places every day. 
+                Discover new places in your neighbourhood with your friends or alone.</p>
+            </div>
+            
+            <div class="hero-text-p">
+                <h2>Hit the road, collect badges and win discounts at your local store.</h2>
+                <p>Collect all the badges by scanning the QR codes and you receive a nice discount in your local sport shop to hit the road even more.</p>
+            </div>
+
+            <div>
+                <h2>Customize your own hiker</h2>
+                <p>Make a unique hiker, make him like like you want him to look.</p>
+            </div>
+    </div>
+</section>
+
+<section class="h-layout cards fade-in-up">
+        {% for feature in collections.features %}
+            <div class="card">
+                <img src="images/{{ feature.data.icon }}" alt="icon">
+                <h2>{{ feature.data.title }}</h2>
+                <p>{{ feature.data.text }}</p>
+                <a href="{{ feature.url }}" class="primary-button">Learn more</a>
+            </div>
+        {% endfor %}
+</section>
+
+{% if quotes | length %}
+    <section class="h-layout fade-in-up">
+        <h1 class="left">Testimonials</h1>
+        <div class="testimonials">
+            {% for quote in quotes %}
+            <div class="testimonial">
+                <p><span class="sign">''</span>{{ quote.quote }}</p>
+                <div class="testimonial_review">
+                    <img class="user" src="images/{{ quote.user }}" alt="user">
+                    <div class="testimonial_review_info">
+                        <span class="user-name">{{ quote.author }}</span>
+                        <span class="user-date">{{ quote.date }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}    
+        </div>
+    </section>
+{% endif %}
+
+{% if customers | length %}
+    <section class="h-layout customers-section fade-in-up">
+        <h1 class="left">Clients</h1>
+        <div class="customers">
+            {% for customer in customers %}
+                <div class="customers__logo">
+                    <img src="images/logo/{{ customer.logo }}" alt="{{ customer.alt }}">
+                </div>
+            {% endfor %}
+        </div>
+    </section>  
+{% endif %}
+
+<section class="h-layout fade-in-up">
+    <h1 class="left">Blogs</h1>
+    <div class="cards cards-blog">
+        {% for blog in collections.blogs | coverFilter %}
+            <div class="card card-blog">
+                <img class="card-blog__image" src="./images/{{ blog.data.image }}" alt="blog image">
+                <div class="card-blog__content">
+                    <h2>{{ blog.data.title }}</h2>
+                    <p>{{ blog.data.text }}</p>
+                    <span class="card-blog__content__created">{{ blog.data.created }}</span>
+                    <a href="{{ blog.url }}" class="primary-button">Read more</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

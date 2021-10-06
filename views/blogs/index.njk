@@ -1,0 +1,30 @@
+---
+layout: base
+tags: null
+title: Blog
+subtitle: Dit is een subtitle
+allAuthors:
+    - Tim
+    - Evi
+    - Kathleen
+eleventyNavigation:
+    key: Blog
+    order: 3
+---
+
+<section class="h-layout">
+    <h1 class="left">Blogs</h1>
+    <ul class="cards cards-blog">
+        {% for blog in collections.blogs %}
+            <li class="card card-blog">
+                <img class="card-blog__image" src="../images/{{ blog.data.image }}" alt="blog image">
+                <div class="card-blog__content">
+                    <h2>{{ blog.data.title }}</h2>
+                    <p>{{ blog.data.text }}</p>
+                    <span class="card-blog__content__created">{{ blog.data.created }}</span>
+                    <a href="{{ blog.url }}" class="primary-button">Read more</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</section>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="https://use.typekit.net/kyh5iei.css">
+  <link rel="stylesheet" href="https://use.typekit.net/kyh5iei.css">
+  <link rel="stylesheet" href="./assets/main.css">
+</head>
+  <body>
+    
+    {% include './components/header.njk' %}
+
+    <main>
+        {{ content | safe }}
+
+        <div class="to-top-btn h-layout"></div>
+
+        <script src="./scripts/main.js"></script>
+        <script src="./scripts/animations.js"></script>
+    </main>
+
+    {% include './components/footer.njk' %}
+
+  </body>
+</html>
